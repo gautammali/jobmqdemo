@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+
+@tailwind base;
+@tailwind components;
+
+@layer components {
+  .btn-sky {
+    @apply hover:bg-[#254a7e] hover:text-white transition_1 text-lg bg-[#99e1f3] rounded px-8 py-3 border-2 border-[#99e1f3];
+  }
+
+  .btn-border {
+    @apply hover:bg-[#254a7e] hover:text-white transition_1 text-lg bg-none border-2 border-black rounded px-8 py-3;
+  }
+
+  .btn-outline {
+    @apply rounded-full bg-white px-6 py-[10px] text-[#0076bd] border border-[#0076bd] font-semibold flex gap-1 items-center hover:underline;
+  }
+
+  .btn-success {
+    @apply rounded-full px-6 py-[10px] text-white border font-semibold flex gap-1 items-center bg-green-600 hover:underline;
+  }
+
+  .btn-contain {
+    @apply rounded-full text-white px-6 py-3 bg-[#0076bd] hover:bg-primary-900 font-semibold flex gap-1 items-center hover:underline transition_1;
+  }
+
+  .btn-delete {
+    @apply rounded-full text-white px-6 py-3 bg-rose-600 hover:bg-rose-700 font-semibold flex gap-1 items-center transition_1;
+  }
+
+  .transition_1 {
+    @apply transition-all duration-200 ease-linear
+  }
+
+
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  .shadow-md {
+    box-shadow: 4px 4px 10px rgba(232, 232, 232, 0.25);
+  }
+
+}
+
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Public Sans', sans-serif;
+}
+
+.Roboto {
+  font-family: 'Roboto', sans-serif;
+}
