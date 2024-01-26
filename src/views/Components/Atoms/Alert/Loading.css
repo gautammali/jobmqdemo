@@ -1,0 +1,35 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: black;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.spinner-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+}
+
+/* Add your spinner styling here */
+.spinner {
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    border-top: 4px solid #000000;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

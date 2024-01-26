@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import { useLinkedIn } from "react-linkedin-login-oauth2";
 import { FaLinkedinIn } from 'react-icons/fa'
-function Linkedin() {
-
+import { useExternalUserMutation } from '../../../../features/auth/registerApi';
+function Linkedin({setExternalLoginSuccess}) {
+    const [externalUser] = useExternalUserMutation()
     const { linkedInLogin } = useLinkedIn({
-        clientId: "77o751rz0suq0c",
+        clientId: "776k4gh77wda46",
         redirectUri: `${window.location.origin}/linkedin`,
         onSuccess: (code) => {
             console.log(code);
             setCode(code);
             setErrorMessage("");
         },
-        scope: "r_emailaddress r_liteprofile",
+        scope: "openid profile w_member_social email",
         onError: (error) => {
-            console.log(error);
+            console.log(error,code);
             setCode("");
             setErrorMessage(error.errorMessage);
         },
@@ -21,40 +22,119 @@ function Linkedin() {
     const [code, setCode] = React.useState("");
     const [errorMessage, setErrorMessage] = React.useState("");
 
-
-
+    const requestAccessToken = async (code, state) => {
+        const url = 'https://www.linkedin.com/oauth/v2/accessToken';
+        const data = {
+            'grant_type': 'authorization_code',
+            'code': code,
+            'redirect_uri': `${window.location.origin}/linkedin`,
+            'client_id': '776k4gh77wda46',
+            'client_secret': 'QjpYVnuaRdnhvEeJ',
+            'state': state
+        };
+    
+        try {
+            setExternalLoginSuccess(true);
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: JSON.stringify(data)
+            });
+    
+            if (!response.ok) {
+                await getDataFromExternallyServer();
+                return;
+            }
+    
+            const token = await response.json();
+            if (token) {
+                await getUserDetails(token.access_token);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            getDataFromExternallyServer();
+        }
+    };
+    
     useEffect(() => {
         if (code) {
-            const url = 'https://www.linkedin.com/oauth/v2/accessToken';
-            const data = new URLSearchParams();
-            data.append('grant_type', 'authorization_code');
-            data.append('code', code);
-            data.append('client_id', '77o751rz0suq0c');
-            data.append('client_secret', 'JWKMlYaVu3ANTU9i');
-            data.append('redirect_uri', `${window.location.origin}/linkedin`);
-            try {
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: data
-                }).then(response => response.json())
-
-                // if (response.ok) {
-                //     const accessToken = await response.json();
-                //     // Handle the access token as needed
-                //     console.log(accessToken);
-                // } else {
-                //     // Handle error response
-                //     console.error('Error:', response.status);
-                // }
-            } catch (error) {
-                // Handle network or other fetch-related errors
-                console.error('Error:', error);
-            }
+            requestAccessToken(code, '12345');
         }
     }, [code]);
+    
+    const getDataFromExternallyServer = async () => {
+        // const url = 'https://linkedlnloginserver.onrender.com/callback';
+        const url = 'http://localhost:3006/callback';
+        const data = {
+            'code': code,
+            'state': '12345'
+        };
+    
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+    
+            const user = await response.json();
+            if (user.profile) {
+                const data = {
+                    firstName: user.profile.given_name,
+                    lastName: user.profile.family_name,
+                    email: user.profile.email,
+                    profilePic: user.profile.picture,
+                    externalId: user.profile.sub,
+                    loginType: "linkedin",
+                };
+                externalUser(data);
+                setExternalLoginSuccess(false);
+            }
+        } catch (error) {
+            console.error('Error fetching data from external server:', error);
+        }
+    };
+    
+    const getUserDetails = async (access_token) => {
+        const apiUrl = 'https://api.linkedin.com/v2/userinfo';
+        const headers = {
+            'Authorization': `Bearer ${access_token}`,
+            'Content-Type': 'application/json',
+        };
+        const options = {
+            method: 'GET',
+            headers: headers,
+        };
+    
+        try {
+            const response = await fetch(apiUrl, options);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            const user = await response.json();
+            if (user.body || user.data) {
+                const data = {
+                    firstName: user.body.given_name || user.data['given_name'],
+                    lastName: user.body.family_name || user.data['family_name'],
+                    email: user.body.email || user.data['email'],
+                    profilePic: user.body.picture || user.data['picture'],
+                    externalId: user.body.sub || user.data['sub'],
+                    loginType: "linkedin",
+                };
+                externalUser(data);
+                setExternalLoginSuccess(false);
+            }
+        } catch (error) {
+            console.error('Error fetching data from LinkedIn API:', error);
+        }
+    };
+    
 
     return (<>
         <button onClick={linkedInLogin} className="flex gap-5 items-center bg-white w-full py-3 px-[10px] text-gray-600 hover:text-gray-400 text-sm rounded shadow-md group/item transition_1">
@@ -85,5 +165,3 @@ function Linkedin() {
 
 
 export default Linkedin;
-
-

@@ -37,8 +37,8 @@ export default function SortBy({ jobListing }) {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none divide-y">
           {data.map((item, id) => (
-            <Menu.Item>
-              <p
+            <Menu.Item key={id}>
+              <p key={id}
                 onClick={() => handleSort(item)}
                 className={
                   "block px-4 py-2 text-sm font-semibold hover:bg-gray-100 text-gray-700 cursor-pointer"

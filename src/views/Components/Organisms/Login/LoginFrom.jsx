@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiAlertCircle } from "react-icons/fi"
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet-async';
 const LoginFrom = () => {
     const navigate = useNavigate()
     const [login, { data, isLoading, isSuccess }] = useLoginMutation()
+    const [ externalLoginSuccess,setExternalLoginSuccess ] = useState(false)
     const initialValues = {
         userName: '',
         password: ""
@@ -45,7 +46,7 @@ const LoginFrom = () => {
             </Helmet>
             <div className='bg-site-bg-100 py-10'>
                 <div className=' bg-white w-full shadow-lg rounded-md max-w-[1137px] mx-auto px-2 sm:px-10 py-10'>
-                    {isLoading && <Loading />}
+                    {(isLoading || externalLoginSuccess) && <Loading />}
                     <div className="w-[873px] mx-auto">
                         <Formik
                             initialValues={initialValues}
@@ -73,7 +74,7 @@ const LoginFrom = () => {
                         <div className="flex items-center justify-center gap-2.5 mt-10">
                             {/* <FbLogin /> */}
                             <GLogin />
-                            <Linkedin />
+                            <Linkedin setExternalLoginSuccess={setExternalLoginSuccess}/>
                         </div>
                     </div>
                 </div>

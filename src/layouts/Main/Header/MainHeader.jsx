@@ -18,6 +18,8 @@ export default function MainHeader() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLogout = () => {
+        localStorage.clear();
+        sessionStorage.clear();
         if (user?.userType === 1) {
             setTimeout(() => {
                 navigate("/individuals/login")

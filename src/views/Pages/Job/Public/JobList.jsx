@@ -17,6 +17,8 @@ export default function JobList() {
     useJobListingMutation();
   const jobListData = useSelector((state) => state.jobList);
   console.log(jobListData);
+  const userAuthData = JSON.parse(localStorage.getItem('auth')) 
+  const accessToken = userAuthData ? userAuthData.accessToken : '';
   useEffect(() => {
     jobListing({ ...jobListData });
   }, []);
@@ -34,7 +36,7 @@ export default function JobList() {
 
   if (!isLoading && !isError && data?.jobsListingResponses?.length > 0) {
     content = data?.jobsListingResponses?.map((item) => (
-      <Single key={item.id} {...item} />
+      <Single key={item.id} {...item} accessToken={accessToken} />
     ));
   }
 
@@ -72,14 +74,15 @@ const Single = (props) => {
     desingnation,
     expirationDate,
     currency,
-    slugUrl
+    slugUrl,
+    accessToken
   } = props || {};
   return (
     <div className="p-5 bg-white border-b">
       <div className="flex justify-between">
         <a
           // to={`/jobs/${id}/${slugUrl || desingnation?.split(" ").join('-')}`} 
-          href={`https://jobs.jobmq.com/jobs/${id}`} 
+          href={`http://localhost:3000/jobs/${id}/${accessToken}`} 
           className="text-lg underline hover:no-underline text-[#0076bd]">{desingnation}</a>
         <div className="flex gap-3 items-center">
           

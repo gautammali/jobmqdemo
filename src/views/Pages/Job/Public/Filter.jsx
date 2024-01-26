@@ -78,8 +78,8 @@ const Single = ({ item, lineNo, prevItem }) => {
       )}
       {exists?.keywordValue && (
         <p onClick={() => setOpen(true)} className="text-[#4f4f4f]">
-          {exists?.keywordValue?.map((i) => (
-            <span>{i}</span>
+          {exists?.keywordValue?.map((i,id) => (
+            <span key={id}>{i}</span>
           ))}
         </p>
       )}

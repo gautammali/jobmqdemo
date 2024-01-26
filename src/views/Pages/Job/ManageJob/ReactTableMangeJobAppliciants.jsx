@@ -104,8 +104,8 @@ export default function ReactTableMangeJobAppliciants({ data: dataTable }) {
         <thead className="">
           {headerGroups.map((headerGroup) => (
             <tr className="h-10" {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
+              {headerGroup.headers.map((column,id) => (
+                <th key={id}
                   className={`${
                     ((column.render("Header") === "Attachment" &&
                       "text-center") ||
@@ -127,13 +127,13 @@ export default function ReactTableMangeJobAppliciants({ data: dataTable }) {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
+          {page.map((row,id) => {
             prepareRow(row);
             return (
-              <tr className="" {...row.getRowProps()}>
-                {row.cells.map((cell) => {
+              <tr key={id} className="" {...row.getRowProps()}>
+                {row.cells.map((cell,id) => {
                   return (
-                    <td className="border-b py-3" {...cell.getCellProps()}>
+                    <td key={id} className="border-b py-3" {...cell.getCellProps()}>
                       {cell.render("Cell")}
                     </td>
                   );

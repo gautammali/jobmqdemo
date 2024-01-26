@@ -64,6 +64,7 @@ import CallBack from "../views/Components/Molecules/Register/CallBack";
 import { LinkedInCallback } from "react-linkedin-login-oauth2";
 import PrivacyPage from "../views/Pages/PrivacyPage";
 import TermsPage from "../views/Pages/TermsPage";
+import Logout from "../layouts/Main/Header/Logout";
 
 const MainRoutes = () => {
   const authChecked = useAuthCheck();
@@ -174,7 +175,7 @@ const MainRoutes = () => {
 
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
-
+        <Route path="/logout" element={<Logout />} />
 
       </Route>
     </Routes>

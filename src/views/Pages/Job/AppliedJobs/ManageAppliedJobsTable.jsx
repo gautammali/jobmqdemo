@@ -81,10 +81,10 @@ export default function ManageAppliedJobsTable({ data: dataTable }) {
 
             <table {...getTableProps()} className={"w-full min-w-[1286px] shadow"}>
                 <thead className="">
-                    {headerGroups.map((headerGroup) => (
-                        <tr className="h-10" {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <th
+                    {headerGroups.map((headerGroup,id) => (
+                        <tr key={id} className="h-10" {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map((column,_id) => (
+                                <th key={_id}
                                     className={`${((column.render("Header") === "Attachment" &&
                                         "text-center") ||
                                         (column.render("Header") === "Application ID" &&
@@ -109,9 +109,9 @@ export default function ManageAppliedJobsTable({ data: dataTable }) {
                         prepareRow(row);
                         return (
                             <tr className="" {...row.getRowProps()}>
-                                {row.cells.map((cell) => {
+                                {row.cells.map((cell,id) => {
                                     return (
-                                        <td className="border-b py-3" {...cell.getCellProps()}>
+                                        <td key={id} className="border-b py-3" {...cell.getCellProps()}>
                                             {cell.render("Cell")}
                                         </td>
                                     );

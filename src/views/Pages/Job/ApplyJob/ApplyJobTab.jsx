@@ -8,7 +8,7 @@ export default function ApplyJobTab({data}) {
   return (
     <Tab.Group>
       <Tab.List className={"container"}>
-        {tabitems.map((item)=><Tab as={Fragment}>
+        {tabitems.map((item,id)=><Tab key={id} as={Fragment}>
           {({ selected }) => (
             /* Use the `selected` state to conditionally style the selected tab. */
             <button

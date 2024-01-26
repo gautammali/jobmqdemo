@@ -18,13 +18,13 @@ const Footer = () => {
 
                         <h3 className='text-white font-semibold'>Follow Us</h3>
                         <a href="http://facebook.com/iazadur" target="_blank" rel="noopener noreferrer" className="border p-1 text-white">
-                            <FaFacebookF size={20} round={true} />
+                            <FaFacebookF size={20} round={'true'} />
                         </a>
                         <a href="http://facebook.com/iazadur" target="_blank" rel="noopener noreferrer" className="border p-1 text-white">
-                            <AiOutlineTwitter size={20} round={true} />
+                            <AiOutlineTwitter size={20} round={'true'} />
                         </a>
                         <a href="http://facebook.com/iazadur" target="_blank" rel="noopener noreferrer" className="border p-1 text-white">
-                            <FaLinkedinIn size={20} round={true} />
+                            <FaLinkedinIn size={20} round={'true'} />
                         </a>
 
                     </div>
@@ -34,20 +34,20 @@ const Footer = () => {
 
                         <FacebookShareButton url={window.location.href}>
                             <div className="border p-1 text-white">
-                                <FaFacebookF size={20} round={true} />
+                                <FaFacebookF size={20} round={'true'} />
                             </div>
                         </FacebookShareButton>
 
 
                         <TwitterShareButton url={window.location.href}>
                             <div className="border p-1 text-white">
-                                <AiOutlineTwitter size={20} round={true} />
+                                <AiOutlineTwitter size={20} round={'true'} />
                             </div>
                         </TwitterShareButton>
 
                         <LinkedinShareButton url={window.location.href}>
                             <div className="border p-1 text-white">
-                                <FaLinkedinIn size={20} round={true} />
+                                <FaLinkedinIn size={20} round={'true'} />
                             </div>
                         </LinkedinShareButton>
 
