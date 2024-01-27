@@ -70,9 +70,9 @@ function Linkedin({setExternalLoginSuccess}) {
         const data = {
             'code': code,
             'state': '12345',
-            'redirectUrl':'https://jobmqdemo.onrender.com/linkedin',
+            'redirectUrl':`${window.location.origin}/linkedin`,
             'systemString' : '776k4gh77wda46',
-            'authsampleCode' : 'QjpYVnuaRdnhvEeJ'
+            'authSampleCode' : 'QjpYVnuaRdnhvEeJ'
         };
     
         try {
