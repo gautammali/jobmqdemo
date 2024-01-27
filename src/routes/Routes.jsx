@@ -100,7 +100,7 @@ const MainRoutes = () => {
 
         <Route path="/individuals">
           <Route index element={<Home />} />
-
+          
           <Route path="login" element={<Public />}>
             <Route index element={<LoginFrom />} />
           </Route>
@@ -128,7 +128,6 @@ const MainRoutes = () => {
               <Route path="settings" element={<Settings />} />
             </Route>
           </Route>
-
 
         </Route>
 
