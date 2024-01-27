@@ -52,8 +52,6 @@
     "re-build": "rm -rf build node_modules && yarn install && yarn build"
   },
   "eslintConfig": {
-    "failOnError": false,
-    "emitWarning": true,
     "extends": [
       "react-app",
       "react-app/jest"
