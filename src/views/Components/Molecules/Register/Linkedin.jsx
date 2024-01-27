@@ -6,7 +6,7 @@ function Linkedin({setExternalLoginSuccess}) {
     const [externalUser] = useExternalUserMutation()
     const { linkedInLogin } = useLinkedIn({
         clientId: "776k4gh77wda46",
-        redirectUri: `${window.location.origin}/linkedin`,
+        redirectUri: `${window.location.origin}`,
         onSuccess: (code) => {
             console.log(code);
             setCode(code);
@@ -27,7 +27,7 @@ function Linkedin({setExternalLoginSuccess}) {
         const data = {
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': `${window.location.origin}/linkedin`,
+            'redirect_uri': `${window.location.origin}`,
             'client_id': '776k4gh77wda46',
             'client_secret': 'QjpYVnuaRdnhvEeJ',
             'state': state
@@ -70,7 +70,7 @@ function Linkedin({setExternalLoginSuccess}) {
         const data = {
             'code': code,
             'state': '12345',
-            'redirectUrl':`${window.location.origin}/linkedin`,
+            'redirectUrl':`${window.location.origin}`,
             'systemString' : '776k4gh77wda46',
             'authSampleCode' : 'QjpYVnuaRdnhvEeJ'
         };
