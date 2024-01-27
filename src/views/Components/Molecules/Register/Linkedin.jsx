@@ -65,11 +65,14 @@ function Linkedin({setExternalLoginSuccess}) {
     }, [code]);
     
     const getDataFromExternallyServer = async () => {
-        // const url = 'https://linkedlnloginserver.onrender.com/callback';
-        const url = 'http://localhost:3006/callback';
+        const url = 'https://linkedlnloginserver.onrender.com/callback';
+        // const url = 'http://localhost:3006/callback';
         const data = {
             'code': code,
-            'state': '12345'
+            'state': '12345',
+            'redirectUrl':'https://jobmqdemo.onrender.com/linkedin',
+            'systemString' : '776k4gh77wda46',
+            'authsampleCode' : 'QjpYVnuaRdnhvEeJ'
         };
     
         try {
