@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/jobmqdemo/static/css/main.7c467eb4.css",
-    "main.js": "/jobmqdemo/static/js/main.94de9ffe.js",
-    "static/js/787.74e3b99c.chunk.js": "/jobmqdemo/static/js/787.74e3b99c.chunk.js",
-    "static/media/businessman.png": "/jobmqdemo/static/media/businessman.60061111b38a90f6cf2f.png",
-    "static/media/young-woman.png": "/jobmqdemo/static/media/young-woman.46eb78e62350b1d7fdd7.png",
-    "static/media/01-Were-here-to-help-find-work.svg": "/jobmqdemo/static/media/01-Were-here-to-help-find-work.92efddc4079385a638664c358115e0c8.svg",
-    "static/media/Orignal.png": "/jobmqdemo/static/media/Orignal.fda1ce72338441943406.png",
-    "index.html": "/jobmqdemo/index.html",
-    "main.7c467eb4.css.map": "/jobmqdemo/static/css/main.7c467eb4.css.map",
-    "main.94de9ffe.js.map": "/jobmqdemo/static/js/main.94de9ffe.js.map",
-    "787.74e3b99c.chunk.js.map": "/jobmqdemo/static/js/787.74e3b99c.chunk.js.map"
+    "main.css": "./static/css/main.7c467eb4.css",
+    "main.js": "./static/js/main.aa484be8.js",
+    "static/js/787.74e3b99c.chunk.js": "./static/js/787.74e3b99c.chunk.js",
+    "static/media/businessman.png": "./static/media/businessman.60061111b38a90f6cf2f.png",
+    "static/media/young-woman.png": "./static/media/young-woman.46eb78e62350b1d7fdd7.png",
+    "static/media/01-Were-here-to-help-find-work.svg": "./static/media/01-Were-here-to-help-find-work.92efddc4079385a638664c358115e0c8.svg",
+    "static/media/Orignal.png": "./static/media/Orignal.fda1ce72338441943406.png",
+    "index.html": "./index.html",
+    "main.7c467eb4.css.map": "./static/css/main.7c467eb4.css.map",
+    "main.aa484be8.js.map": "./static/js/main.aa484be8.js.map",
+    "787.74e3b99c.chunk.js.map": "./static/js/787.74e3b99c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7c467eb4.css",
-    "static/js/main.94de9ffe.js"
+    "static/js/main.aa484be8.js"
   ]
 }
