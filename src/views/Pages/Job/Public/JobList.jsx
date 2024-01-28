@@ -82,7 +82,7 @@ const Single = (props) => {
       <div className="flex justify-between">
         <a
           // to={`/jobs/${id}/${slugUrl || desingnation?.split(" ").join('-')}`} 
-          href={`http://localhost:3000/jobs/${id}/${accessToken}`} 
+          href={`jobmqdemoapp.vercel.app/jobs/${id}/${accessToken}`} 
           className="text-lg underline hover:no-underline text-[#0076bd]">{desingnation}</a>
         <div className="flex gap-3 items-center">
           
